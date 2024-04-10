@@ -8,24 +8,51 @@
       src="luna_pfp.webp"
       id="luna"
       style="
-        margin-left: 25%;
+        margin-left: 0%;
         margin-right: auto;
         width: 20%;
         height: auto%;
         display: block;
       "
     />
-    <p>This is my cat Luna (I love him)</p>
+    <p id="jon">This is my cat Luna (I love him)</p>
 
     <script>
       // $(document).ready(function () {
       //   $("#luna").css("width", "3px");
-      let x = 0;
-      let luna = document.getElementById("luna");
-      while (true) {
-        x += 10;
-        luna.style.marginLeft = 50%;
+      var x = .1;
+      var y = x+"%";
+      var gone = 0
+      const goneMessages = [
+        "This is my cat Luna (I love him)",
+        "oh he's gone",
+        "this is so sad :(",
+        "well feel free to scroll down and see some projects"
+      ];
+      
+      function hesGone() {
+        document.getElementById("jon").innerHTML = goneMessages[gone];
+        if (gone <= goneMessages.length-2) {
+          gone++
+          setTimeout(hesGone, 3000)
+        }
       }
+      
+      function moveLuna() {
+        x += .1*x;
+        y = x+"%";
+        document.getElementById("luna").style.marginLeft = y;
+        if (x >= 100 && gone === 0) {
+          gone++
+          setTimeout(hesGone, 1000)
+        } 
+      }
+      
+      setInterval(moveLuna, 50);
+      // while (true) {
+      //   x += 10;
+      //   y = x+"%"
+      // }
       // });
     </script>
   </body>
