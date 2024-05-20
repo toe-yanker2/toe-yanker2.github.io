@@ -23,6 +23,7 @@
       var x = .1;
       var y = x+"%";
       var gone = 0
+      var luna = document.getElementById("luna")
       const goneMessages = [
         "This is my cat Luna (I love him)",
         "oh he's gone",
@@ -41,7 +42,7 @@
       function moveLuna() {
         x += .1*x;
         y = x+"%";
-        document.getElementById("luna").style.marginLeft = y;
+        luna.style.marginLeft = y;
         if (x >= 100 && gone === 0) {
           gone++
           setTimeout(hesGone, 1000)
